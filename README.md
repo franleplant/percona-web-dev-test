@@ -1,3 +1,18 @@
+# Test documentation.
+
+This documentation is provided as part of the test being completed.
+
+
+## Prerequisites
+
+Node.js
+gulp, bower, karma
+install bower dependencies
+
+
+
+
+
 Percona AngularJS Developer Test
 ================================
 
