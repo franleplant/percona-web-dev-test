@@ -11,19 +11,48 @@ describe('Chart', function () {
         })
     });
 
+
     describe('get', function () {
-        it('should call getUser with username', inject(function (Chart) {
+        it('should return a chart object', inject(function () {
             $httpBackend.expectGET('/charts/1')
                 .respond({
-                username: 'test'
-            });
+                    "id": 1,
+                    "name": "mysql",
+                    "description":
+                    "MySQL Load"
+                });
 
-            var result = chartResource.get({id: "1" });
+            var result = chartResource.get({id: "1"});
 
             $httpBackend.flush();
 
-            expect('test').toEqual('test');
+            expect(result.id).toEqual(1);
         }));
-
     });
+
+
+    describe('query', function () {
+
+        it('should return an array of charts', inject(function () {
+            $httpBackend.expectGET('/charts')
+                .respond([{
+                    id:1,
+                    name:'mysql'
+                }, {
+                    id:2,
+                    name:'cpu'
+                }, {
+                    id:3,
+                    name:'disk-sda01'
+                }]);
+
+
+            var result = chartResource.query();
+
+            $httpBackend.flush();
+
+            expect(result[0].id).toEqual(1);
+        }));
+    });
+
 });

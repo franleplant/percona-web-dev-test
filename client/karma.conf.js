@@ -5,9 +5,10 @@ module.exports = function(config){
 
             files : [
                   'src/vendor/angular/angular.js',
-                  'src/vendor/angular-route/angular-route.js',
+                  'src/vendor/angular-resource/angular-resource.js',
                   'src/vendor/angular-mocks/angular-mocks.js',
-                  'src/**/*.js',
+                  'src/app/**/*.js',
+                  'src/common/**/*.js',
             ],
 
             autoWatch : true,
