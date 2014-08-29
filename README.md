@@ -10,6 +10,16 @@ gulp, bower, karma
 install bower dependencies
 
 
+## Run
+
+
+## Test
+
+### Unit Tests
+
+cd client
+gulp test
+
 
 
 

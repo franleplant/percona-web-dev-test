@@ -1,3 +1,4 @@
 angular.module('percona', [
-  'ngRoute'
+  'ngRoute',
+  'percona.resources.chart'
 ])
