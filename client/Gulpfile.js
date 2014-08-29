@@ -11,7 +11,7 @@ var inject = require("gulp-inject");
 */
 var dir = {
     src: {
-        js: ['app/**/*.js', 'common/**/*','!**/*.test.js']
+        js: ['src/app/**/*.js', 'src/common/**/*','!**/*.test.js']
     }       
 };
 
@@ -29,4 +29,21 @@ gulp.task('index', function () {
   return gulp.src('./index.html')
             .pipe(inject(sources))
             .pipe(gulp.dest('./'));
+});
+
+
+
+
+var karma = require('karma').server;
+
+/**
+    test
+
+    summary:
+            run unit test with Karma test runner
+ */
+gulp.task('test', function (done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+    }, done);
 });
