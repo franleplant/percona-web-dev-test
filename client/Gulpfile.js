@@ -26,9 +26,10 @@ gulp.task('index', function () {
   // It's not necessary to read the files (will speed up things), we're only after their paths:
   var sources = gulp.src(dir.src.js, {read: false});
 
-  return gulp.src('./index.html')
-            .pipe(inject(sources))
-            .pipe(gulp.dest('./'));
+  return gulp.src('./src/index.html')
+            //reference the files injected relative to index.html
+            .pipe(inject(sources, {relative: true}))
+            .pipe(gulp.dest('./src'));
 });
 
 
