@@ -26,6 +26,8 @@ angular.module('percona.directives.chart', [
 		type: this.config.chart_types[0],
 		options: {
 			legend: 'none',
+			height: 200,
+			width: 757,
     		fill: 20,
     		displayExactValues: true,
     		vAxis: {
