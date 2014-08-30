@@ -20,6 +20,9 @@ angular.module('percona.charts', [
 
 
 .controller('ChartOverallCtrl', function ($scope, charts) {
+	/*
+		Basic chart data loading to display
+	*/
 	$scope.charts = charts;
 
 	$scope.charts[0].display = true;
