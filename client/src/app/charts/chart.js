@@ -20,9 +20,7 @@ angular.module('percona.charts', [
 })
 
 
-//TODO, normalize function names
-
-.controller('ChartCtrl', function ($scope, Chart, ChartData, NormalizeChartData, agg_functions, NormalizeChartDataByDate ) {
+.controller('ChartCtrl', function ($scope, Chart, ChartData, normalize_chart_data, agg_functions, normalize_chart_data_by_date ) {
 
 	var raw_chart_data,
 		ctrl = this;
@@ -49,7 +47,7 @@ angular.module('percona.charts', [
 		Expose normalized data with the selected aggregated function
 	*/
 	ctrl.normalize_chart_data = function () {
-		$scope.chart.data = NormalizeChartData(  raw_chart_data, agg_functions[ctrl.config.selected_agg_function]  )
+		$scope.chart.data = normalize_chart_data(  raw_chart_data, agg_functions[ctrl.config.selected_agg_function]  )
 	}
 
 
@@ -81,7 +79,7 @@ angular.module('percona.charts', [
 	*/
 	ctrl.fetch_single_day = function () {
 		ChartData.get({id: '1', date: $scope.date}).$promise.then(function (res) {
-			$scope.chart.data = NormalizeChartDataByDate(res);
+			$scope.chart.data = normalize_chart_data_by_date(res);
 		})
 	}
 

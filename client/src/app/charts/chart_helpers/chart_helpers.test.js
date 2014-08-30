@@ -6,8 +6,8 @@ describe('percona.charts.helpers', function () {
     beforeEach(angular.mock.module('percona.charts.agg_functions'));
 
 
-    describe('NormalizeChartData', function () {
-        it('should return a normalized data object', inject(function (NormalizeChartData, avg) {
+    describe('normalize_chart_data', function () {
+        it('should return a normalized data object', inject(function (normalize_chart_data, avg) {
             var raw_data = [
                     {"date":'2014-07-01', 'data': [31, 263, 159, 22, 270]},
                     {"date":'2014-07-02', 'data': [14, 260, 158, 12, 276]},
@@ -53,13 +53,13 @@ describe('percona.charts.helpers', function () {
 
             
 
-            expect(  NormalizeChartData(raw_data, avg)  ).toEqual(  normalized_data  );
+            expect(  normalize_chart_data(raw_data, avg)  ).toEqual(  normalized_data  );
         }));
     });
 
 
-    describe('NormalizeChartDataByDate', function () {
-        it('should return a normalized data object', inject(function (NormalizeChartDataByDate) {
+    describe('normalize_chart_data_by_date', function () {
+        it('should return a normalized data object', inject(function (normalize_chart_data_by_date) {
             var raw_data = {"date":'2014-07-01', 'data': [31, 263, 159]};
 
 
@@ -97,7 +97,7 @@ describe('percona.charts.helpers', function () {
 
             
 
-            expect(  NormalizeChartDataByDate(raw_data)  ).toEqual(  normalized_data  );
+            expect(  normalize_chart_data_by_date(raw_data)  ).toEqual(  normalized_data  );
         }));
     });
 });

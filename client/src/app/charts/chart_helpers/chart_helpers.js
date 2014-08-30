@@ -3,13 +3,13 @@ angular.module('percona.charts.helpers', [
 
 
 /**
-	NormalizeChartData
+	normalize_chart_data
 
 		summary:
 				Helper function to transform chart data that comes from the server into
 				a chart suitable data format
 */
-.factory('NormalizeChartData', function () {
+.factory('normalize_chart_data', function () {
 
 	var i, len;
 
@@ -60,13 +60,13 @@ angular.module('percona.charts.helpers', [
 
 
 /**
-	NormalizeChartDataByDate
+	normalize_chart_data_by_date
 
 			summary:
 					Modified helper specialized into transforming single date single data serie
 
 */
-.factory('NormalizeChartDataByDate', function () {
+.factory('normalize_chart_data_by_date', function () {
 
 	var i, len;
 
