@@ -14,7 +14,9 @@ angular.module('percona.directives.chart')
 		templateUrl: 'common/directives/chart/chart.tpl.html',
 		controller: 'ChartDirectiveCtrl',
 		controllerAs: 'ctrl',
-		scope: {},
+		scope: {
+			chartid: '@'
+		},
 		link: link
 	}
 });

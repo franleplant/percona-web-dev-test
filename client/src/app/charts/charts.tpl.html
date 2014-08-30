@@ -1,3 +1,14 @@
-<div percona-chart chartid="1"></div>
-<div percona-chart chartid="2"></div>
-<div percona-chart chartid="3"></div>
+<form>
+	<fieldset class="controls">
+		<label>Select Charts to be Shown</label>
+
+		<span ng-repeat="chart in charts" >
+			<input type="checkbox" value="{{  $index  }}" ng-model="chart.display">{{chart.name}}</input>			
+		</span>
+
+
+	</fieldset>
+</form>
+
+
+<div percona-chart ng-repeat="chart in charts" chartid="{{chart.id}}" ng-show="chart.display"></div>

@@ -2,15 +2,18 @@
 	box-sizing: border-box;
 }
 
-body {
-	margin: auto;
-	width: 992px;
+ng-view > * {
+	margin-bottom: 4px;
 }
-
 
 fieldset {
 	border: 1px #ccc solid;
 	margin-bottom: 2px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
 }
 
 label {
@@ -20,6 +23,12 @@ label {
 
 h3 {
 	text-align: center;
+}
+
+header {
+	background: #333 url(../img/logo.png) no-repeat 10px 20px;
+	height: 95px;
+	margin-bottom: 8px;
 }
 
 .l-chart-container {
@@ -37,3 +46,14 @@ h3 {
 	width: 78%;
 	display: inline-block;
 }
+
+.controls {
+	margin: 0;
+}
+
+.main {
+	margin: auto;
+	width: 992px;
+}
+
+

@@ -9,13 +9,19 @@ angular.module('percona.charts', [
 	$routeProvider
 		.when('/charts', {
 	        templateUrl: 'app/charts/charts.tpl.html',
-	        controller: 'ChartOverallCtrl'
+	        controller: 'ChartOverallCtrl',
+	        resolve: {
+	        	charts: function (Chart) {
+		        	return Chart.query();
+		        }
+	        }
 	    });
 })
 
 
-.controller('ChartOverallCtrl', function ($scope) {
-	$scope.chartid = 1;
-	console.log('hi')
+.controller('ChartOverallCtrl', function ($scope, charts) {
+	$scope.charts = charts;
+
+	$scope.charts[0].display = true;
 });
 

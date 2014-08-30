@@ -51,8 +51,8 @@ angular.module('percona.directives.chart', [
 	function get_chart_data () {
 		
 
-		var chart_data_promise = ChartData.query({id: $attrs.chartid}).$promise;
-		var chart_meta_promise = Chart.get({id: $attrs.chartid}).$promise;
+		var chart_data_promise = ChartData.query({id: $scope.chartid}).$promise;
+		var chart_meta_promise = Chart.get({id: $scope.chartid}).$promise;
 
 
 		/*
