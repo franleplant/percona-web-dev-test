@@ -8,10 +8,22 @@
 	<script src="vendor/angular/angular.js"></script>
 	<script src="vendor/angular-route/angular-route.js"></script>
 	<script src="vendor/angular-resource/angular-resource.js"></script>
+  <script src="vendor/angular-google-chart/ng-google-chart.js"></script>
+
+  
 </head>
 <body>
+
+
+  <ng-view></ng-view>
+
+
+
   <!-- inject:js -->
   <script src="app/app.js"></script>
+  <script src="app/charts/agg_functions.js"></script>
+  <script src="app/charts/chart.js"></script>
+  <script src="app/charts/chart_helpers.js"></script>
   <script src="common/resources/chart.js"></script>
   <!-- endinject -->
 </body>

@@ -12,6 +12,9 @@ install bower dependencies
 
 ## Run
 
+cd path/to/project/root
+npm start
+
 
 ## Test
 

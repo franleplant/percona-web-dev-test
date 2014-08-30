@@ -1,0 +1,39 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: auto;
+	width: 992px;
+}
+
+
+fieldset {
+	border: 1px #ccc solid;
+	margin-bottom: 2px;
+}
+
+label {
+	display: block;
+	margin-bottom: 4px;
+}
+
+h3 {
+	text-align: center;
+}
+
+.l-chart-container {
+	border: 1px #ccc solid;
+	padding: 10px;
+}
+
+.l-chart-container form {
+	width: 20%;
+	display: inline-block;
+}
+
+
+[google-chart] {
+	width: 78%;
+	display: inline-block;
+}

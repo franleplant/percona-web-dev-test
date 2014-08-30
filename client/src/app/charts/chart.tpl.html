@@ -1,0 +1,27 @@
+<div class="l-chart-container" ng-controller="ChartCtrl">
+    <h3>{{chart.description}}</h3>
+
+    <form class="options">
+        <fieldset>
+            <label>Aggregation Function</label>
+            <input type="radio" name="selected_agg_function" value="avg" ng-model="config.selected_agg_function"> avg </input>
+            <input type="radio" name="selected_agg_function" value="max" ng-model="config.selected_agg_function"> max </input>
+            <input type="radio" name="selected_agg_function" value="min" ng-model="config.selected_agg_function"> min </input>
+        </fieldset>
+
+        <fieldset>
+            <label>Chart Type</label>
+            <select ng-model="chart.type" ng-options="value for value in config.chart_types"></select>
+        </fieldset>
+
+        <fieldset>
+            <label>Day options</label>
+            <input type="checkbox" ng-model="single_day_flag"> Single Day </input>
+            <input type="date" ng-model="date" ng-disabled="!single_day_flag">          
+        </fieldset>
+    </form>
+
+
+    <div google-chart chart="chart" style="{{cssStyle}}"></div>
+ 
+</div>
