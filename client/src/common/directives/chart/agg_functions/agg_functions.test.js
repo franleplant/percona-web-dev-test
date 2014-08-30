@@ -1,6 +1,6 @@
-describe('agg_functions', function () {
+describe('percona.directives.charts.agg_functions', function () {
     //inject module containing functionality to test
-    beforeEach(angular.mock.module('percona.charts.agg_functions'));
+    beforeEach(angular.mock.module('percona.directives.chart.agg_functions'));
 
     describe('avg', function () {
     	it('should calculate the average of a array of numbers', inject(function (avg) {

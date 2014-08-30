@@ -1,4 +1,4 @@
-angular.module('percona.charts.helpers', [
+angular.module('percona.directives.chart.helpers', [
 ])
 
 
@@ -52,7 +52,6 @@ angular.module('percona.charts.helpers', [
 				)
 			);
 		}
-
 
 		return normalized_data;
 	};

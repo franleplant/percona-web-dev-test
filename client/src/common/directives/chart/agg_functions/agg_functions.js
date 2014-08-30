@@ -1,4 +1,4 @@
-angular.module('percona.charts.agg_functions', [
+angular.module('percona.directives.chart.agg_functions', [
 
 ])
 

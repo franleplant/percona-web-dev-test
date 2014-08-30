@@ -1,0 +1,43 @@
+<div class="l-chart-container">
+    <h3>{{ctrl.chart.description}}</h3>
+
+    <form class="options">
+        <fieldset>
+            <label>Aggregation Function</label>
+            <input type="radio" name="selected_agg_function" value="avg" 
+                ng-model="ctrl.config.selected_agg_function" 
+                ng-disabled="ctrl.config.single_day_flag" 
+                ng-change="ctrl.normalize_chart_data(ctrl.config.selected_agg_function)">
+                avg
+            </input>
+            <input type="radio" name="selected_agg_function" value="max" 
+                ng-model="ctrl.config.selected_agg_function" 
+                ng-disabled="ctrl.config.single_day_flag" 
+                ng-change="ctrl.normalize_chart_data(ctrl.config.selected_agg_function)">
+                max
+            </input>
+            <input type="radio" name="selected_agg_function" value="min" 
+                ng-model="ctrl.config.selected_agg_function" 
+                ng-disabled="ctrl.config.single_day_flag" 
+                ng-change="ctrl.normalize_chart_data(ctrl.config.selected_agg_function)">
+                min
+            </input>
+        </fieldset>
+
+        <fieldset>
+            <label>Chart Type</label>
+            <select ng-model="ctrl.chart.type" ng-options="value for value in ctrl.config.chart_types" 
+                ng-change="ctrl.update_axis(ctrl.chart.type, ctrl.config.single_day_flag)"></select>
+        </fieldset>
+
+        <fieldset>
+            <label>Day options</label>
+            <input type="checkbox" ng-model="ctrl.config.single_day_flag" ng-change="ctrl.single_day_off(ctrl.config.single_day_flag)"> Single Day </input>
+            <input type="date" ng-model="date" ng-disabled="!ctrl.config.single_day_flag" ng-change="ctrl.fetch_single_day(ctrl.config.single_day_flag)">          
+        </fieldset>
+    </form>
+
+
+    <div google-chart chart="ctrl.chart" style="{{cssStyle}}"></div>
+ 
+</div>

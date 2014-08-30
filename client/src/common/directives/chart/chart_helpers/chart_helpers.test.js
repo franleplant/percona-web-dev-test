@@ -2,8 +2,8 @@ describe('percona.charts.helpers', function () {
     var chartResource, $httpBackend;
 
     //inject module containing functionality to test
-    beforeEach(angular.mock.module('percona.charts.helpers'));
-    beforeEach(angular.mock.module('percona.charts.agg_functions'));
+    beforeEach(angular.mock.module('percona.directives.chart.helpers'));
+    beforeEach(angular.mock.module('percona.directives.chart.agg_functions'));
 
 
     describe('normalize_chart_data', function () {
