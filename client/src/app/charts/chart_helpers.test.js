@@ -5,16 +5,9 @@ describe('percona.charts.helpers', function () {
     beforeEach(angular.mock.module('percona.charts.helpers'));
     beforeEach(angular.mock.module('percona.charts.agg_functions'));
 
-        // beforeEach(function () {
-        //     angular.mock.inject(function ($injector) {
-        //         $httpBackend = $injector.get('$httpBackend');
-        //         chartResource = $injector.get('Chart');
-        //     })
-        // });
 
-
-    describe('get', function () {
-        it('should return a chart object', inject(function (NormalizeChartData, avg) {
+    describe('NormalizeChartData', function () {
+        it('should return a normalized data object', inject(function (NormalizeChartData, avg) {
             var raw_data = [
                     {"date":'2014-07-01', 'data': [31, 263, 159, 22, 270]},
                     {"date":'2014-07-02', 'data': [14, 260, 158, 12, 276]},
@@ -61,6 +54,50 @@ describe('percona.charts.helpers', function () {
             
 
             expect(  NormalizeChartData(raw_data, avg)  ).toEqual(  normalized_data  );
+        }));
+    });
+
+
+    describe('NormalizeChartDataByDate', function () {
+        it('should return a normalized data object', inject(function (NormalizeChartDataByDate) {
+            var raw_data = {"date":'2014-07-01', 'data': [31, 263, 159]};
+
+
+            var normalized_data = {
+            //Headers               
+            "cols": [{
+                    "id": "dependant_axis",
+                    "label": "dependant_axis",
+                    "type": "number"                    
+            }, {
+                    "id": "value",
+                    "label": "Value",
+                    "type": "number"                    
+            }],
+                //actual data
+                "rows": [
+                    {
+                        "c": [
+                            { "v": 0 },
+                            { "v": raw_data.data[0] }
+                        ]
+                    }, {
+                        "c": [
+                            { "v": 1 },
+                            { "v": raw_data.data[1] }
+                        ]
+                    }, {
+                        "c": [
+                            { "v": 2 },
+                            { "v": raw_data.data[2] }
+                        ]
+                    }
+                ]
+            };
+
+            
+
+            expect(  NormalizeChartDataByDate(raw_data)  ).toEqual(  normalized_data  );
         }));
     });
 });

@@ -56,4 +56,60 @@ angular.module('percona.charts.helpers', [
 
 		return normalized_data;
 	};
+})
+
+
+/**
+	NormalizeChartDataByDate
+
+			summary:
+					Modified helper specialized into transforming single date single data serie
+
+*/
+.factory('NormalizeChartDataByDate', function () {
+
+	var i, len;
+
+
+	/*
+		Tiny col "constructor" helper
+	*/
+	function col_factory(index, data) {
+		return {
+			"c": [
+                //v stands for value
+                { "v": index},
+                { "v": data }
+            ]
+		};
+	}
+
+	return function (raw_chart_obj) {
+		var normalized_data = { 
+			//Headers               
+            "cols": [{
+                    "id": "dependant_axis",
+                    "label": "dependant_axis",
+                    "type": "number"                    
+            }, {
+                    "id": "value",
+                    "label": "Value",
+                    "type": "number"                    
+            }],
+
+            //actual data
+            "rows": []
+        };
+
+        var raw_chart_data = raw_chart_obj.data;
+
+        for (i = 0, len = raw_chart_data.length; i < len; i ++) {
+			normalized_data.rows.push(
+				col_factory( i, raw_chart_data[i]	)
+			);
+		}
+
+
+		return normalized_data;
+	};
 });

@@ -20,71 +20,77 @@ angular.module('percona.charts', [
 })
 
 
+//TODO, normalize function names
+
+.controller('ChartCtrl', function ($scope, Chart, ChartData, NormalizeChartData, agg_functions, NormalizeChartDataByDate ) {
+
+	var raw_chart_data,
+		ctrl = this;
+
+	
 
 
-.controller('ChartCtrl', function ($scope, Chart, ChartData, NormalizeChartData, agg_functions ) {
-
-	var raw_chart_data;
-
-	//Intilizaice!
-
-	//available graph types
-	//todo: use "this" instaed of scope
-	$scope.config = {
+	/* 
+		Chart related config parameters 
+	*/
+	ctrl.config = {
 		chart_types: ["LineChart", "BarChart"],
-		selected_agg_function: 'avg'
+		selected_agg_function: 'avg',
+		single_day_flag: false
 	};
 
+	/*
+		Initialize single_day date selector
+	*/
+	ctrl.date = new Date(2014, 1, 1);
 
+
+	/*
+		Expose normalized data with the selected aggregated function
+	*/
+	ctrl.normalize_chart_data = function () {
+		$scope.chart.data = NormalizeChartData(  raw_chart_data, agg_functions[ctrl.config.selected_agg_function]  )
+	}
+
+
+
+	/*
+		Placeholder for the Chart Data ready to be rendered
+	*/
 	$scope.chart = {
-		type: $scope.config.chart_types[0],
+		type: ctrl.config.chart_types[0],
 		options: {
 			legend: 'none',
-    		"fill": 20,
-    		"displayExactValues": true,
-    		"vAxis": {
-				"title": "",
+    		fill: 20,
+    		displayExactValues: true,
+    		vAxis: {
+				title: "",
     		},
-			"hAxis": {
-				"title": "Date"
+			hAxis: {
+				title: "Date"
 			}
 		}
 	};
 
 	
-	/*
-		Initialize single_day date selector
-	*/
-	$scope.date = new Date(2014, 1, 1);
+
+
 
 	/*
-		Get the chart temporal data series
+		Single Day functionality
 	*/
-	ChartData.query({id: '1'}).$promise.then(function(res) {
-			/* Save raw data */
-        	raw_chart_data = res;
-
-        	/* render graph */
-        	$scope.normalize_chart_data();
-        	
-        });
-	/*
-		Expose normalized data with the selected aggregated function
-	*/
-	$scope.normalize_chart_data = function () {
-		$scope.chart.data = NormalizeChartData(  raw_chart_data, agg_functions[$scope.config.selected_agg_function]  )
+	ctrl.fetch_single_day = function () {
+		ChartData.get({id: '1', date: $scope.date}).$promise.then(function (res) {
+			$scope.chart.data = NormalizeChartDataByDate(res);
+		})
 	}
 
-	/*
-		Actively watch for the selected aggregated function and in case of change
-		re render the graph with the new data.
-	*/
-	$scope.$watch("config.selected_agg_function", function(new_value, old_value) {
-		if(raw_chart_data) {
-			$scope.normalize_chart_data();	
+
+	ctrl.single_day_off = function () {
+		if (!ctrl.config.single_day_flag) {
+			ctrl.normalize_chart_data();
 		}
-		
-	});
+	}
 
 
 	/*
@@ -95,19 +101,37 @@ angular.module('percona.charts', [
 		Because BarCharts are horizontally rendered and LineCharts
 		are vertically rendered
 	*/
-	$scope.$watch("chart.type", function(new_value, old_value) {
-		if (new_value === $scope.config.chart_types[0] ) {
+	ctrl.update_chart_type = function () {
+		if ($scope.chart.type === ctrl.config.chart_types[0] ) {
 			/* If the new value === 'LineChart' */
 			$scope.chart.options.vAxis.title = $scope.chart.description;
 			$scope.chart.options.hAxis.title = 'Date';
 
-		} else if (new_value === $scope.config.chart_types[1]) { 
+		} else if ($scope.chart.type === ctrl.config.chart_types[1]) { 
 			/* if new_value === 'BarChart' */
 			$scope.chart.options.vAxis.title = 'Date';
 			$scope.chart.options.hAxis.title = $scope.chart.description;			
-		}
-		
-	});
+		}		
+	}
+
+
+
+
+
+
+
+
+	/*
+		Get the chart temporal data series
+	*/
+	ChartData.query({id: '1'}).$promise.then(function(res) {
+			/* Save raw data */
+        	raw_chart_data = res;
+
+        	/* render graph */
+        	ctrl.normalize_chart_data();
+        	
+        });
 
 
 	/*

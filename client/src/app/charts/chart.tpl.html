@@ -1,23 +1,29 @@
-<div class="l-chart-container" ng-controller="ChartCtrl">
+<div class="l-chart-container" ng-controller="ChartCtrl as Ctrl">
     <h3>{{chart.description}}</h3>
 
     <form class="options">
         <fieldset>
             <label>Aggregation Function</label>
-            <input type="radio" name="selected_agg_function" value="avg" ng-model="config.selected_agg_function"> avg </input>
-            <input type="radio" name="selected_agg_function" value="max" ng-model="config.selected_agg_function"> max </input>
-            <input type="radio" name="selected_agg_function" value="min" ng-model="config.selected_agg_function"> min </input>
+            <input type="radio" name="selected_agg_function" value="avg" ng-model="Ctrl.config.selected_agg_function" ng-disabled="Ctrl.config.single_day_flag" ng-change="Ctrl.normalize_chart_data()">
+                avg
+            </input>
+            <input type="radio" name="selected_agg_function" value="max" ng-model="Ctrl.config.selected_agg_function" ng-disabled="Ctrl.config.single_day_flag" ng-change="Ctrl.normalize_chart_data()">
+                max
+            </input>
+            <input type="radio" name="selected_agg_function" value="min" ng-model="Ctrl.config.selected_agg_function" ng-disabled="Ctrl.config.single_day_flag" ng-change="Ctrl.normalize_chart_data()">
+                min
+            </input>
         </fieldset>
 
         <fieldset>
             <label>Chart Type</label>
-            <select ng-model="chart.type" ng-options="value for value in config.chart_types"></select>
+            <select ng-model="chart.type" ng-options="value for value in Ctrl.config.chart_types" ng-change="Ctrl.update_chart_type()"></select>
         </fieldset>
 
         <fieldset>
             <label>Day options</label>
-            <input type="checkbox" ng-model="single_day_flag"> Single Day </input>
-            <input type="date" ng-model="date" ng-disabled="!single_day_flag">          
+            <input type="checkbox" ng-model="Ctrl.config.single_day_flag" ng-change="Ctrl.single_day_off()"> Single Day </input>
+            <input type="date" ng-model="date" ng-disabled="!Ctrl.config.single_day_flag" ng-change="Ctrl.fetch_single_day()">          
         </fieldset>
     </form>
 
