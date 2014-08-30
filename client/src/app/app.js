@@ -1,7 +1,6 @@
 angular.module('percona', [
   'ngRoute',
-  'percona.charts',
-  'percona.directives.chart'
+  'percona.charts'
 ])
 
 .config(function ($routeProvider) {
