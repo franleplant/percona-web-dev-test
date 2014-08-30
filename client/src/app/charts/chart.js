@@ -80,6 +80,7 @@ angular.module('percona.charts', [
 	ctrl.fetch_single_day = function () {
 		ChartData.get({id: '1', date: $scope.date}).$promise.then(function (res) {
 			$scope.chart.data = normalize_chart_data_by_date(res);
+			ctrl.update_chart_type();
 		})
 	}
 
@@ -91,8 +92,10 @@ angular.module('percona.charts', [
 	}
 
 
+
+	//TODO: change the name of this function
 	/*
-		Actively watch for the type of chart being displayed so we can
+		Watch for the type of chart being displayed so we can
 		name the axis properly.
 
 		Why?
@@ -103,11 +106,11 @@ angular.module('percona.charts', [
 		if ($scope.chart.type === ctrl.config.chart_types[0] ) {
 			/* If the new value === 'LineChart' */
 			$scope.chart.options.vAxis.title = $scope.chart.description;
-			$scope.chart.options.hAxis.title = 'Date';
+			$scope.chart.options.hAxis.title = ctrl.config.single_day_flag ? 'Time' : 'Date' ;
 
 		} else if ($scope.chart.type === ctrl.config.chart_types[1]) { 
 			/* if new_value === 'BarChart' */
-			$scope.chart.options.vAxis.title = 'Date';
+			$scope.chart.options.vAxis.title = ctrl.config.single_day_flag ? 'Time' : 'Date' ;
 			$scope.chart.options.hAxis.title = $scope.chart.description;			
 		}		
 	}
