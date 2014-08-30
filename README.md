@@ -23,6 +23,16 @@ gulp test
 
 
 
+## Notes
+
+### Resources
+
+In another iteration of this project it will be nice to use $http instead of $resource 
+to get the data from the server so we can implement more control over the parameters needed
+for the server calls and more control over the errors that slack or missing parameters will 
+generate.
+
+
 Percona AngularJS Developer Test
 ================================
 
