@@ -1,4 +1,9 @@
 angular.module('percona', [
   'ngRoute',
-  'percona.resources.chart'
+  'percona.charts'
 ])
+
+.config(function ($routeProvider) {
+	//default location
+	$routeProvider.otherwise({redirectTo: '/charts'});
+});
