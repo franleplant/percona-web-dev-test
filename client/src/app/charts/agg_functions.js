@@ -67,3 +67,11 @@ angular.module('percona.charts.agg_functions', [
 	};
 })
 
+.factory('agg_functions', function (avg, max, min) {
+	return {
+		avg: avg,
+		max: max,
+		min: min
+	}
+});
+
