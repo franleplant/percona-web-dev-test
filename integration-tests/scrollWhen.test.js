@@ -5,37 +5,7 @@ describe('scrollWhen directive', function() {
     });
 
 
-    describe('Default Behavior', function () {
-        it('should have the first checkbox checked and the rest unchecked to match the Charts being showed', function() {
-
-            element.all(by.css('.controls > span > input'))
-                .first()
-                .getAttribute('checked')
-                .then(function (checked) {
-                    
-                    expect(checked).toBeTruthy();
-            });
-
-            element.all(by.css('.controls > span > input'))
-                .get(1)
-                .getAttribute('checked')
-                .then(function (checked) {
-                    
-                    expect(checked).toBeFalsy();
-            });
-
-            element.all(by.css('.controls > span > input'))
-                .get(2)
-                .getAttribute('checked')
-                .then(function (checked) {
-                    
-                    expect(checked).toBeFalsy();
-            });
-        });    
-    });
-
-
-    it('should display / hide the first chart when the first control checkbox is checked / unchecked', function() {
+    it('should scroll into view a newly showed chart', function() {
 
         var checkbox2 = element.all(by.css('.controls > span > input')).get(1);
         var checkbox3 = element.all(by.css('.controls > span > input')).get(2);

@@ -51,7 +51,7 @@ cd /path/to/project/root
 # start the app
 npm start &
 # start protractor server
-webdriver-manager start &
+webdriver-manager start
 # run the tests
 protractor integration-tests/protractor.conf.js
 ```
