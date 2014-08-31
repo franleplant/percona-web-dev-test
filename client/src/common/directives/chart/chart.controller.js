@@ -5,7 +5,7 @@ angular.module('percona.directives.chart', [
 	'percona.resources.chart'
 ])
 
-.controller('ChartDirectiveCtrl', function ($scope, $attrs, $q, Chart, ChartData, agg_functions, normalize_chart_data, normalize_chart_data_by_date ) {
+.controller('ChartDirectiveCtrl', function ($scope, $q, Chart, ChartData, agg_functions, normalize_chart_data, normalize_chart_data_by_date ) {
 
 	/* 
 		Chart related config parameters 

@@ -1,5 +1,5 @@
 describe('percona.directives.charts DirectiveController', function () {
-    var $scope, ctrl;
+    var ctrl;
 
     //inject module containing functionality to test
     beforeEach(angular.mock.module('percona.directives.chart'));
@@ -7,10 +7,14 @@ describe('percona.directives.charts DirectiveController', function () {
     beforeEach(angular.mock.module('percona.directives.chart.helpers'));
 
     beforeEach(inject(function($rootScope, $controller, $q, Chart, ChartData, normalize_chart_data, normalize_chart_data_by_date ) {
+
+        var $scope = $rootScope.$new();
+        //preload scope with needed parameters
+        $scope.chartid = 1;
+
         var locals = {
-            $scope: $rootScope.$new(),
+            $scope: $scope,
             $q: $q,
-            $attrs: {chartId: 1},
             Chart: Chart,
             ChartData: ChartData,
             agg_functions: { avg: function () { return 1; }},
