@@ -5,36 +5,102 @@ This documentation is provided as part of the test being completed.
 
 ## Prerequisites
 
-Node.js
-gulp, bower, karma
-install bower dependencies
+- Node.js
+- Gulp, Bower, Karma, [Protractor](https://github.com/angular/protractor/blob/master/docs/tutorial.md#setup)
+- Install Bower dependencies
+
+
+For the last two:
+
+
+```sh
+cd /path/to/project/root
+npm install -g gulp bower karma protractor
+#let protractor install its dependencies
+webdriver-manager update
+
+cd client
+bower install
+```
 
 
 ## Run
 
-cd path/to/project/root
+```sh
+cd /path/to/project/root
 npm start
-
+```
 
 ## Test
 
 ### Unit Tests
 
+
+```sh
+cd /path/to/project/root
 cd client
 gulp test
+```
+
+### Integration Tests (E2E)
+
+Integration tests are done with Protractor.
+
+```sh
+cd /path/to/project/root
+# start the app
+npm start &
+# start protractor server
+webdriver-manager start &
+# run the tests
+protractor integration-tests/protractor.conf.js
+```
 
 
+## Develop
+
+Gulp task that I have used during the development process.
+To run the tasks make sure to be inside the **client** directory.
+
+- `gulp index`: inject all javascript source files into the index.html (vendor files are not included)
 
 
 ## Notes
 
 ### Resources
 
-In another iteration of this project it will be nice to use $http instead of $resource 
+In another iteration of this project it will be nice to use `$http` instead of `$resource` 
 to get the data from the server so we can implement more control over the parameters needed
 for the server calls and more control over the errors that slack or missing parameters will 
 generate.
 
+Also it will be desirable to include in the app code a Message Center to display any message to the user (error or status),
+and and loader indicator to correctly indicate the user that an ajax call is being processed.
+
+### Directives
+
+I had an issue with `perconaChart` directive that prevented it from rendering in the site.
+I spent almost an hour debugging it and at the end I found out that for some unknown reason this
+`angular` version is not rendering element directives and the rest types of directives work fine.
+So I ended up using attribute directive.
+
+
+
+### Linting
+
+With more time I will probably use a linting tool to lift the code quality.
+
+### Css
+
+With more time and withing a bigger process I definitively use a preprocessor such as Sass or Less.
+I personally prefer Less due to its easy integration with the Node.js environment.
+
+Also I will put more thought into the architecture and organization of the Css code.
+
+
+
+
+> Next: original Test basis docs
 
 Percona AngularJS Developer Test
 ================================
