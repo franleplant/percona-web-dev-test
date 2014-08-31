@@ -106,7 +106,7 @@ angular.module('percona.directives.chart', [
 				And also the axis are different when running on single Day mode
 	*/
 	this.update_axis = function (chart_type, single_day_flag) {
-		/* Usefull aliases */
+		/* Useful aliases */
 		var line_type = this.config.chart_types[0];
 		var bar_type = this.config.chart_types[1];
 		var description = this.chart.description;
