@@ -1,20 +1,22 @@
 module.exports = function(config){
-      config.set({
+    config.set({
 
-            basePath : './',
+        basePath : './src/',
 
-            files : [
-                  'src/vendor/angular/angular.js',
-                  'src/vendor/angular-resource/angular-resource.js',
-                  'src/vendor/angular-mocks/angular-mocks.js',
-                  'src/app/**/*.js',
-                  'src/common/**/*.js',
-            ],
+        files : [
+            'vendor/angular/angular.js',
+            'vendor/angular-resource/angular-resource.js',
+            'vendor/angular-mocks/angular-mocks.js',
+            'app/**/*.js',
+            'common/**/*.js',
+            {pattern: 'common/directives/**/*.tpl.html', watched: true, included: false, served: true}
+        ],
 
-            autoWatch : true,
+        autoWatch : true,
 
-            frameworks: ['jasmine'],
+        frameworks: ['jasmine'],
 
-            browsers : ['PhantomJS'],
-      });
+        /* Only PhantomJS for speed */
+        browsers : ['PhantomJS'/*, 'Chrome'*/],
+    });
 };

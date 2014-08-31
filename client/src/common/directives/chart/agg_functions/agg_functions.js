@@ -67,6 +67,8 @@ angular.module('percona.directives.chart.agg_functions', [
 	};
 })
 
+
+/* Wrapper function */
 .factory('agg_functions', function (avg, max, min) {
 	return {
 		avg: avg,
