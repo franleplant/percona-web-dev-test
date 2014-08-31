@@ -140,7 +140,7 @@ angular.module('percona.directives.chart', [
 		var self = this;
 		var chart_type = this.chart.type;
 
-		/* Only fectch single day data if the user checks single_day mode */
+		/* Only fetch single day data if the user checks single_day mode */
 		if (single_day_flag) {
 			ChartData.get({id: '1', date: $scope.date}).$promise.then(function (res) {
 
