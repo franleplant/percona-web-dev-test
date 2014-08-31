@@ -79,7 +79,7 @@ and and loader indicator to correctly indicate the user that an ajax call is bei
 
 ### Directives
 
-I had an issue with `perconaChart` directive that prevented it from rendering in the site.
+I had an issue creating `perconaChart` directive that prevented it from rendering in the site.
 I spent almost an hour debugging it and at the end I found out that for some unknown reason this
 `angular` version is not rendering element directives and the rest types of directives work fine.
 So I ended up using attribute directive.

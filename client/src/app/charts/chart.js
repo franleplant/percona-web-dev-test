@@ -2,7 +2,8 @@ angular.module('percona.charts', [
 	'ngRoute',
 	'googlechart',
 	'percona.resources.chart',
-	'percona.directives.chart'
+	'percona.directives.chart',
+	'percona.directives.scrollwhen'
 ])
 
 .config(function ($routeProvider) {

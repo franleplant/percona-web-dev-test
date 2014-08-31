@@ -1,0 +1,3 @@
+/*
+    This directive in particular is tested through Protractor
+*/

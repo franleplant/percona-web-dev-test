@@ -11,4 +11,4 @@
 </form>
 
 
-<div percona-chart ng-repeat="chart in charts" chartid="{{chart.id}}" ng-show="chart.display"></div>
+<div ng-repeat="chart in charts" percona-chart chartid="{{chart.id}}" ng-show="chart.display" scroll-when="chart.display"></div>
